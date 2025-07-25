@@ -5,10 +5,10 @@ function removePaywall() {
     el.classList.remove("tw-backdrop-blur-sm");
   });
   document.querySelectorAll("style").forEach(style => {
+    const content = style.textContent;
     if (
-      style.textContent.includes("#html-prev-") &&
-      style.textContent.includes(".t") &&
-      style.textContent.includes("filter:blur")
+      content.match(/#html-prev-\d+\s+\.t\s*{[^}]*filter\s*:\s*blur/i) ||
+      content.match(/#t\d+_\d+~\.t\s*{[^}]*filter\s*:\s*blur/i)
     ) {
       style.remove();
     }
