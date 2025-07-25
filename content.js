@@ -4,6 +4,15 @@ function removePaywall() {
   document.querySelectorAll(".tw-backdrop-blur-sm").forEach(el => {
     el.classList.remove("tw-backdrop-blur-sm");
   });
+  document.querySelectorAll("style").forEach(style => {
+    if (
+      style.textContent.includes("#html-prev-") &&
+      style.textContent.includes(".t") &&
+      style.textContent.includes("filter:blur")
+    ) {
+      style.remove();
+    }
+  });
 }
 
 removePaywall();
